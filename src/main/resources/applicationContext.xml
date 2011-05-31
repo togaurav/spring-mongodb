@@ -15,7 +15,7 @@
     <bean id="mongoTemplate" class="org.springframework.data.document.mongodb.MongoTemplate">
     	<constructor-arg name="mongo" ref="mongo"/>
     	<constructor-arg name="databaseName" value="test"/>
-    	<constructor-arg name="defaultCollectionName" value="contact"/>
+    	<constructor-arg name="defaultCollectionName" value="contacts"/>
     </bean>
 
     <bean id="mongo" class="org.springframework.data.document.mongodb.MongoFactoryBean">
