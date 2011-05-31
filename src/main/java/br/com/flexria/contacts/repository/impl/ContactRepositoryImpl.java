@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import br.com.flexria.contacts.domain.Contact;
 import br.com.flexria.contacts.repository.ContactRepository;
 /**
- * This is a service layer implementation for {@link ContactRepository}.
- * 
  * @author Fabio B. Silva <fabio.bat.silva@gmail.com>
  */
 @Service("contactRepository")
@@ -23,6 +21,5 @@ public class ContactRepositoryImpl extends GenericRepositoryWithMongo<Contact, O
 		Query query 		= new Query(criteria);
 		return template.findOne(query, targetClass);
 	}
-
 	
 }

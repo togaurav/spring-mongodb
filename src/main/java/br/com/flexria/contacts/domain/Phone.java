@@ -1,6 +1,8 @@
 package br.com.flexria.contacts.domain;
 
-
+/**
+ * @author Fabio B. Silva <fabio.bat.silva@gmail.com>
+ */
 public class Phone {
 
 	private String number;

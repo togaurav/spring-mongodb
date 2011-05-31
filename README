@@ -1,0 +1,5 @@
+POST
+http://www.flexria.com.br/home/?p=728
+
+Basic application using MongoDB + Spring Data
+To create the eclipse project run : mvn eclipse:eclipse

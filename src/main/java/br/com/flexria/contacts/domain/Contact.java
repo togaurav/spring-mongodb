@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.document.mongodb.mapping.Document;
-
-@Document
+/**
+ * @author Fabio B. Silva <fabio.bat.silva@gmail.com>
+ */
+@Document(collection="contacts")
 public class Contact {
 
+	@Id
 	private ObjectId id;
 	private String name;
 	private String email;

@@ -20,8 +20,6 @@ import br.com.flexria.contacts.domain.Phone;
 
 
 /**
- * A simple integration test for {@link ContactRepository}.
- * 
  * @author Fabio B. Silva <fabio.bat.silva@gmail.com>
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -59,10 +57,6 @@ public class ContactRepositoryTest extends TestCase{
 		contact.setName("Fabio Silva");
 		
 		contactRepository.merge(contact);
-		
-		
-		query 	= new Query(Criteria.whereId().is(contact.getId()));
-		contact = template.findOne(query , Contact.class);
 		
 		assertEquals(contact.getName(), "Fabio Silva");
 	}

@@ -8,7 +8,11 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.document.mongodb.MongoTemplate;
+import org.springframework.data.document.mongodb.mapping.Document;
 
+/**
+ * @author Fabio B. Silva <fabio.bat.silva@gmail.com>
+ */
 public abstract class GenericRepositoryWithMongo<T, ID extends Serializable> {
 
 	
@@ -28,7 +32,13 @@ public abstract class GenericRepositoryWithMongo<T, ID extends Serializable> {
 
 	@PostConstruct
 	public void initCollection() {
-		this.collectionName = this.targetClass.getSimpleName().toLowerCase();
+		if(this.targetClass.isAnnotationPresent(Document.class)){
+			Document document 	= this.targetClass.getAnnotation(Document.class);
+			this.collectionName = document.collection();
+		}
+		else{
+			this.collectionName = this.targetClass.getSimpleName().toLowerCase();
+		}
 	}
 	
 	public String getCollectionName() {
@@ -39,12 +49,12 @@ public abstract class GenericRepositoryWithMongo<T, ID extends Serializable> {
 		this.collectionName = collectionName;
 	}
 	
-	public List<T> getCollection() {
-		return template.getCollection(collectionName, targetClass);
-	}
-
 	public Class<T> getPersistentClass() {
 		return targetClass;
+	}
+	
+	public List<T> getCollection() {
+		return template.getCollection(collectionName, targetClass);
 	}
 
 	public void persist(T entity) {
